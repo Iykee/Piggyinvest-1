@@ -1,0 +1,213 @@
+Skip to content
+ git-temak / Piggyvest-Interest-Calculator
+Code Issues 0 Pull requests 0 Projects 0 Actions Wiki Security 0 Pulse Community
+Piggyvest-Interest-Calculator/index.html
+@Oritsegbubemi Oritsegbubemi added the backend
+049eba2 yesterday
+193 lines (180 sloc)  7.44 KB
+ 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>PiggyCalc - Your Simple Savings Calculator</title>
+</head>
+<body>
+	<!-- NAVIGATION MENU -->
+	<header class="header">
+		<nav class="navbar navbar-style">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hamenu">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href=""><img src="img/piggyvest.png" alt="logo" class="logo"></a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="hamenu">
+					<ul class="nav navbar-nav navbar-right nav-style">
+						<li><a href="#">About</a></li>
+						<li><a href="#">Stories</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Log In</a></li>
+						<li class="form-inline"><button class="btn menu-btn" type="button">Create a Free Account</button></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- HEADER SECTION -->
+	<div class="container-fluid">
+		<div class="row header-section">
+			<div class="col-sm-12 col-md-6 col-lg-6 header-align">
+				<h1>Estimate your investment growth over time</h1>
+				<div class="tablet-align"><img class="img-responsive" src="img/banner1.png"></div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-6 width-40 header-align">
+				<form class="col-lg-10 col-sm-12">
+					<div class="form-group">
+						<label for="amount">Amount to Lock</label>
+						<input type="number" class="form-control" id="amount" placeholder="2500" required>
+					</div>
+					<div class="form-group">
+						<label for="duration">Duration</label>
+						<select class="form-control" id="saving-plan" required>
+							<option selected="Duration">Select Duration of Lock</option>
+							<option value="piggybank">Piggybank</option>
+      						<option value="flex_naira">Flex Naira</option>
+						    <option value="safelock">Safelock</option>
+						    <option value="targets">Targets</option>
+						    <option value="flex_dollar">Flex Dollar</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="duration">Duration (in months)</label>
+						<input type="number" max='12' ondrop='return false;' onpaste='return false;' class="form-control" id="duration" placeholder="number of months" required>
+					</div>
+					<!-- <div class="form-group">
+						<label for="payback">Payback Date</label>
+						<input class="form-control" name="payback" placeholder="Select Date" type="text" id="payback">
+					</div> -->
+					<div class="form-group p-5">
+						<button onclick="calculateInterest()" class="btn btn-primary buttons" type='button'>Calculate Interest</button>
+      				</div>
+				</form>
+				<div class="col-lg-10 col-sm-12 text-center">
+					<h2 class="price-title">Estimated Balance</h2>
+
+					<!-- The Result -->
+					<p class="price" id="demo2">-----------</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- HOW CALCULATOR WORKS SECTION -->
+	<div class="container calc-section">
+		<h2 class="text-center">How does the calculator work</h2>
+		<div class="row section2">
+			<div class="col-sm-12 col-lg-5 col-md-5">
+				<img class="img-responsive" src="img/banner2.png">
+			</div>
+			<div class="col-sm-12 col-lg-7 col-md-7">
+				<div class="cst-width">
+					<p class="calc-text">Use our "SafeLock" feature to lock funds away so you don't have access until your set date. You also earn over 13% p.a.</p>
+					<button class="btn green-btn">Create a Free Account</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CREATE ACCOUNT SECTION -->
+	<div class="container account-section text-center">
+		<div class="row">
+			<h2>Over ₦1,000,000,000 securely saved every month</h2>
+			<p>PiggyVest uses bank-level security measures to keep your data safe.</p>
+			<p>PiggyVest users save & invest well over a billion every single month, and they are just getting started.</p>
+		</div>
+
+		<div class="row">
+			<button class="btn blue-btn">Create Account for Free</button>
+		</div>
+	
+		<div class="row buttons">
+			<div class="col-sm-2 col-md-4 col-lg-5"></div>
+			<a href="#"><img class="col-sm-4 col-md-2 col-lg-1 img-responsive store-btn" src="img/astore.png"></a>
+			<a href="#"><img class="col-sm-4 col-md-2 col-lg-1 img-responsive store-btn" src="img/gplay.png"></a>
+			<div class="col-sm-2 col-md-4 col-lg-5"></div>
+		</div>
+	</div>
+
+	<!-- FOOTER SECTION -->
+	<footer>
+		<div class="row footer">
+			<div class="container">
+				<div class="col-sm-12 col-md-8">
+					<img src="img/piggyvest.png" class="footer-logo">
+					<p>PiggyVest (formerly piggybank.ng) is the largest online savings & investing platform in Nigeria.
+						For over 4 years, our customers have saved and invested billions of Naira that they would normally be tempted to spend.</p>
+					<br>
+					<p>Office: Tesmot House, 3 Abdulrahman Okene Close, off Ligali Ayorinde Street, Victoria Island, Lagos.
+						0700 933 933 933 (Mon-Fri from 9am-5pm) - contact@piggyvest.com</p>
+					<br>
+					<p>© 2016 - 2020 PiggyTech Global Limited - RC 1405222</p>
+				</div>
+				<div class="col-sm-12 col-md-2">
+					<h3 class="footer-heading">Quick Links</h3>
+					<ul>
+						<li><a href="">AutoSave™</a></li>
+						<li><a href="">PiggyLink</a></li>
+						<li><a href="">Quick Save™</a></li>
+						<li><a href="">SafeLock™</a></li>
+						<li><a href="">Withdrawals & Breaking</a></li>
+						<li><a href="">Salary Management</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-12 col-md-2 footer-right">
+					<h3 class="footer-heading">Company</h3>
+					<ul>
+						<li><a href="">About</a></li>
+						<li><a href="">FAQ</a></li>
+						<li><a href="">Term of Use</a></li>
+						<li><a href="">Privacy Policy</a></li>
+						<li>
+							<span>
+								<a href="#"><img src="img/facebook.png"></a>
+								<a href="#"><img src="img/twitter.png"></a>
+								<a href="#"><img src="img/instagram.png"></a>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<!-- Form Datepicker Script -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="payback"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.width-40 form').parent() : "body";
+      var options={
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+        startDate: new Date(),
+      };
+      date_input.datepicker(options);
+    })
+	</script>
+
+</body>
+</html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
